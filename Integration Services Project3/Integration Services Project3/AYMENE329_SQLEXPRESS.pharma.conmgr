@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="AYMENE329_SQLEXPRESS.pharma"
+  DTS:DTSID="{75024F23-03EE-456B-A293-6D01051F997F}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=AYMENE329\SQLEXPRESS;Initial Catalog=pharma;Integrated Security=True;Application Name=&quot;SSIS-Integration Services Project3-{75024F23-03EE-456B-A293-6D01051F997F}AYMENE329\SQLEXPRESS.pharma&quot;;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

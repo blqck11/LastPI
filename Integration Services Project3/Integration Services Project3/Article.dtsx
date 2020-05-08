@@ -1,0 +1,1334 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/8/2020 3:32:45 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AYMENE329"
+  DTS:CreatorName="AYMENE329\wizzlabs"
+  DTS:DTSID="{9A8EC12C-FBFF-48A1-A3D4-EA916A63C59C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Article"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{1F028C15-A1E7-4F46-B154-1F0EFCB75809}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.ODS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DDE31BDA-7CCC-40B6-BCAC-B3745B82DF75}"
+      DTS:ObjectName="AYMENE329\SQLEXPRESS.ODS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=AYMENE329\SQLEXPRESS;Initial Catalog=ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.pharma1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{71334522-7CE9-46FC-A7DD-6718B8169E2F}"
+      DTS:ObjectName="AYMENE329\SQLEXPRESS.pharma1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=AYMENE329\SQLEXPRESS;Initial Catalog=pharma;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A6A71812-32F8-4CCA-A041-8F3376A7A01E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Article"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Article"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ARTICLE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Article.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.pharma1]"
+                  connectionManagerRefId="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.pharma1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeArticle]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeArticle]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeArticle]"
+                      name="CodeArticle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[Designation]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Designation]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[Designation]"
+                      name="Designation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeCategorie]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeCategorie]"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeCategorie]"
+                      name="CodeCategorie"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeArticle]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="CodeArticle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeABarre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="CodeABarre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Designation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Dosage]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Dosage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[LibelleTableau]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LibelleTableau" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[QuantiteUnitaire]"
+                      dataType="numeric"
+                      name="QuantiteUnitaire"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[ContenanceArticle]"
+                      dataType="i4"
+                      name="ContenanceArticle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[PrixAchatHT]"
+                      dataType="numeric"
+                      name="PrixAchatHT"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[PrixAchatTTC]"
+                      dataType="numeric"
+                      name="PrixAchatTTC"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[PrixVenteHT]"
+                      dataType="numeric"
+                      name="PrixVenteHT"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[PrixVenteTTC]"
+                      dataType="numeric"
+                      name="PrixVenteTTC"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[TVA]"
+                      dataType="numeric"
+                      name="TVA"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Marge]"
+                      dataType="numeric"
+                      name="Marge"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Exonorertva]"
+                      dataType="bool"
+                      name="Exonorertva" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[HR]"
+                      dataType="numeric"
+                      name="HR"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodePCT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CodePCT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeCategorieCNAM]"
+                      dataType="i4"
+                      name="CodeCategorieCNAM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[TarifDeReference]"
+                      dataType="numeric"
+                      name="TarifDeReference"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[AccordPrealable]"
+                      dataType="bool"
+                      name="AccordPrealable" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[PriseEnCharge]"
+                      dataType="bool"
+                      name="PriseEnCharge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[SansCodeBarre]"
+                      dataType="bool"
+                      name="SansCodeBarre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[SansVignette]"
+                      dataType="bool"
+                      name="SansVignette" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[StockAlerte]"
+                      dataType="numeric"
+                      name="StockAlerte"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[QteACommander]"
+                      dataType="numeric"
+                      name="QteACommander"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[DateAlerte]"
+                      dataType="dbDate"
+                      name="DateAlerte" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[DateDerniereCommande]"
+                      dataType="dbDate"
+                      name="DateDerniereCommande" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[QuantiteDernierCommande]"
+                      dataType="numeric"
+                      name="QuantiteDernierCommande"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[DateInitiale]"
+                      dataType="dbDate"
+                      name="DateInitiale" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[StockInitial]"
+                      dataType="i4"
+                      name="StockInitial" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeForme]"
+                      dataType="i4"
+                      name="CodeForme" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeCategorie]"
+                      dataType="i4"
+                      name="CodeCategorie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeLabo]"
+                      dataType="i4"
+                      name="CodeLabo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Rayon]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rayon" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeSituation]"
+                      dataType="i4"
+                      name="CodeSituation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeOperateur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CodeOperateur" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeGroupement]"
+                      dataType="i4"
+                      name="CodeGroupement" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeTypePreparation]"
+                      dataType="i4"
+                      name="CodeTypePreparation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Section]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Section" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[DCI1]"
+                      dataType="i4"
+                      name="DCI1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[DCI2]"
+                      dataType="i4"
+                      name="DCI2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[DCI3]"
+                      dataType="i4"
+                      name="DCI3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[Supprime]"
+                      dataType="bool"
+                      name="Supprime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[FemmeEnceinte]"
+                      dataType="bool"
+                      name="FemmeEnceinte" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[StockArticle]"
+                      dataType="numeric"
+                      name="StockArticle"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[CodeFournisseur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="CodeFournisseur" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].ExternalColumns[NombreCommande]"
+                      dataType="i4"
+                      name="NombreCommande" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[CodeArticle]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[CodeArticle]"
+                      name="CodeArticle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[Designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[Designation]"
+                      name="Designation" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[CodeCategorie]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[CodeCategorie]"
+                      name="CodeCategorie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Article_Cat"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Article_Cat"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CATEGORIE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Article_Cat.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.pharma1]"
+                  connectionManagerRefId="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.pharma1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[CodeCategorie]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].ExternalColumns[CodeCategorie]"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[CodeCategorie]"
+                      name="CodeCategorie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[LibelleCategorie]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].ExternalColumns[LibelleCategorie]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[LibelleCategorie]"
+                      name="LibelleCategorie"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].ExternalColumns[CodeCategorie]"
+                      dataType="i4"
+                      name="CodeCategorie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].ExternalColumns[LibelleCategorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="LibelleCategorie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].ExternalColumns[SupprimeCategorie]"
+                      dataType="bool"
+                      name="SupprimeCategorie" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[CodeCategorie]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[CodeCategorie]"
+                      name="CodeCategorie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[LibelleCategorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[LibelleCategorie]"
+                      name="LibelleCategorie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[CodeCategorie]"
+                      cachedDataType="i4"
+                      cachedName="CodeCategorie"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CodeCategorie]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[CodeArticle]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="CodeArticle"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CodeArticle]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Designation]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Designation"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Designation]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[CodeCategorie]"
+                      cachedDataType="i4"
+                      cachedName="CodeCategorie"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[CodeCategorie]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[LibelleCategorie]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="LibelleCategorie"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[LibelleCategorie]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CodeArticle]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CodeArticle]"
+                      name="CodeArticle">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[CodeArticle]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Designation]"
+                      name="Designation">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Designation]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[LibelleCategorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[LibelleCategorie]"
+                      name="LibelleCategorie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[LibelleCategorie]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ODS_Article]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.ODS]"
+                  connectionManagerRefId="Package.ConnectionManagers[AYMENE329\SQLEXPRESS.ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CodeArticle]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="CodeArticle"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CodeArticle]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CodeArticle]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Designation]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Designation"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Designation]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Designation]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LibelleCategorie]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="LibelleCategorie"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LibelleCategorie]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[LibelleCategorie]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CodeArticle]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="CodeArticle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Designation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LibelleCategorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="LibelleCategorie" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[CodeArticle]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="CodeArticle"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeArticle]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Designation]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Designation"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[Designation]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[CodeCategorie]"
+                      cachedDataType="i4"
+                      cachedName="CodeCategorie"
+                      lineageId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeCategorie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CodeArticle]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CodeArticle]"
+                      name="CodeArticle">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeArticle]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Designation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Designation]"
+                      name="Designation">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[Designation]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CodeCategorie]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CodeCategorie]"
+                      name="CodeCategorie"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Article.Outputs[OLE DB Source Output].Columns[CodeCategorie]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[CodeCategorie]"
+                      cachedDataType="i4"
+                      cachedName="CodeCategorie"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[CodeCategorie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[LibelleCategorie]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="LibelleCategorie"
+                      lineageId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[LibelleCategorie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[CodeCategorie]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[CodeCategorie]"
+                      name="CodeCategorie"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[CodeCategorie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[LibelleCategorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[LibelleCategorie]"
+                      name="LibelleCategorie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output].Columns[LibelleCategorie]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Article_Cat.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Article.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="387,64" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Data Flow Task\Article"
+          TopLeft="414,61" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\Article_Cat"
+          TopLeft="197,64" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="423,158" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Data Flow Task\Sort 1"
+          TopLeft="220,157" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="265.5,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="470,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\Merge Join"
+          TopLeft="290,239" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="472,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117,39"
+              Start="0,0"
+              End="-117,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
+                  <mssgle:LineSegment
+                    End="-113,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113,19.5"
+                    Point2="-117,19.5"
+                    Point3="-117,23.5" />
+                  <mssgle:LineSegment
+                    End="-117,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="269,199">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.6666666666667,40"
+              Start="0,0"
+              End="65.6666666666667,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7082066869301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.7082066869301"
+                    Point2="0,23.7082066869301"
+                    Point3="4,23.7082066869301" />
+                  <mssgle:LineSegment
+                    End="61.6666666666667,23.7082066869301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.6666666666667,23.7082066869301"
+                    Point2="65.6666666666667,23.7082066869301"
+                    Point3="65.6666666666667,27.7082066869301" />
+                  <mssgle:LineSegment
+                    End="65.6666666666667,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="295,315" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="355,281">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.5,34"
+              Start="0,0"
+              End="25.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="21.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,17"
+                    Point2="25.5,17"
+                    Point3="25.5,21" />
+                  <mssgle:LineSegment
+                    End="25.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Article">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Article_Cat">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
